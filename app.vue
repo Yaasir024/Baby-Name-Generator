@@ -76,24 +76,12 @@
       </div>
       <button class="primary">Find Names</button>
     </div>
+    {{SelectedNames}}
   </div>
 </template>
 
 <script setup lang="ts">
-enum Gender {
-  GIRL = 'Girl',
-  BOY = 'Boy',
-  Unisex = 'Unisex'
-}
-enum Length {
-  SHORT = 'Short',
-  ALL = 'All',
-  LONG = 'Long'
-}
-enum Popularity {
-  TRENDY = 'Trendy',
-  UNIQUE = 'Unique',
-}
+import {Gender, Popularity, Length, names} from "@/data"
 
 interface OptionsState {
   gender: Gender;
@@ -107,7 +95,7 @@ const options = reactive<OptionsState>({
   popularity: Popularity.TRENDY
 });
 
-const names = ref<string[]>([])
+const SelectedNames = ref<string[]>([])
 </script>
 
 <style scoped>
