@@ -71,10 +71,31 @@
 </template>
 
 <script setup lang="ts">
-const options = reactive({
-  gender: "Girl",
-  popularity: "Unique",
-  length: "Long",
+enum Gender {
+  GIRL = 'Girl',
+  BOY = 'Boy',
+  Unisex = 'Unisex'
+}
+enum Length {
+  SHORT = 'Short',
+  ALL = 'All',
+  LONG = 'Long'
+}
+enum Popularity {
+  TRENDY = 'Trendy',
+  UNIQUE = 'Unique',
+}
+
+interface OptionsState {
+  gender: Gender;
+  popularity: Popularity;
+  length: Length;
+}
+
+const options = reactive<OptionsState>({
+  gender: Gender.GIRL,
+  length: Length.ALL,
+  popularity: Popularity.TRENDY
 });
 </script>
 
