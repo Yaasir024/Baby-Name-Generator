@@ -106,6 +106,8 @@ const options = reactive<OptionsState>({
   length: Length.ALL,
   popularity: Popularity.TRENDY
 });
+
+const names = ref<string[]>([])
 </script>
 
 <style scoped>
