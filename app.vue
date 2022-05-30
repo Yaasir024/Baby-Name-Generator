@@ -74,6 +74,7 @@
           </button>
         </div>
       </div>
+      <button class="primary">Find Names</button>
     </div>
   </div>
 </template>
@@ -151,5 +152,15 @@ const options = reactive<OptionsState>({
 .option-active {
   background-color: rgb(249, 87, 89);
   color: white;
+}
+.primary {
+  background-color: rgb(249, 87, 89);
+  color: white;
+  border-radius: 6.5rem;
+  border: none;
+  padding: 0.75rem 4rem;
+  font-size: 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
 }
 </style>
