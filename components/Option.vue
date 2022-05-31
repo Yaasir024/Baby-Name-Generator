@@ -1,37 +1,47 @@
 <template>
   <div class="option-container">
-    <h4>{{option.title}}</h4>
+    <h4>{{ option.title }}</h4>
     <div class="option-buttons">
       <button
-      v-for="value in option.buttons"
-      :key="value"
-        class="option option-left"
-        :class="options[option.category] === value && 'option-active'"
+        v-for="(value, index) in option.buttons"
+        :key="value"
+        class="option"
+        :class="computeButtonClasses(value, index)"
         @click="options[option.category] = value"
       >
-        {{value}}
+        {{ value }}
       </button>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { Gender, Popularity, Length} from "@/data";
+import { Gender, Popularity, Length } from "@/data";
 
-interface OptionProps{
-    option: {
-        title: string;
-        category: string;
-        buttons: Gender[] | Popularity[] | Length[]
-    },
-    options: {
-        gender:Gender;
-        popularity: Popularity;
-        length: Length
-    }
+interface OptionProps {
+  option: {
+    title: string;
+    category: string;
+    buttons: Gender[] | Popularity[] | Length[];
+  };
+  options: {
+    gender: Gender;
+    popularity: Popularity;
+    length: Length;
+  };
 }
 
-const props = defineProps<OptionProps>()
+const props = defineProps<OptionProps>();
+
+const computeButtonClasses = (value, index) => {
+  const className = [];
+  if (props.options[props.option.category] === value) {
+    className.push("option-active");
+  }
+  if (index === 0) className.push("option-left");
+  if (index === props.option.buttons.length - 1) className.push("option-right");
+  return className.join(" ")
+};
 </script>
 
 <style scoped>
